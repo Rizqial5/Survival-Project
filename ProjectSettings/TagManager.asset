@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Detection Ground
+  - Enemy
+  - PlayerHitBox
+  - Spell
+  - EnemyHitBox
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground Layer
+  - Water
+  - UI
+  - FootLayer
+  - SpellLayer
+  - AreaLayer
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 852959345
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Castle
+    uniqueID: 500336991
+    locked: 0
