@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee26ce567bd796648a2cc771113fae43, type: 3}
-  m_Name: Thunder
+  m_Name: Fire
   m_EditorClassIdentifier: 
-  spell: {fileID: 3707246125149486480, guid: 252016afcb1b43c4ba6d14214ffd9ab2, type: 3}
-  damageSpell: 2
-  manaConsumed: 1
+  spell: {fileID: 0}
+  damageSpell: 0
+  manaConsumed: 0

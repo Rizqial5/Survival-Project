@@ -4,15 +4,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using Survival.Core;
 using Survival.Spell;
+using Survival.CharType;
 
 namespace Survival.Stats
 {
     public class Attributes : MonoBehaviour
     {
        
-        [SerializeField] int healthPoints = 2;
-        [SerializeField] SpellSO spellEquip;
-        [SerializeField] int manaPoints = 10;
+        // [SerializeField] int healthPoints = 2;
+        // [SerializeField] SpellSO spellEquip;
+        // [SerializeField] int manaPoints = 10;
+        [SerializeField] CharSO charSO;
+        [SerializeField] CharCategories CharCategories;
+
+        private int healthPoints;
+        private int manaPoints;
+        private SpellSO spellEquip;
 
       
 
@@ -24,6 +31,10 @@ namespace Survival.Stats
 
         private void Awake() {
             gameManager = GameObject.FindObjectOfType<GameManager>();
+            healthPoints = (int) charSO.GetStat(Stat.HealthPoint, CharCategories);
+            manaPoints = (int) charSO.GetStat(Stat.ManaPoint, CharCategories);
+            spellEquip = charSO.GetSpellSO(CharCategories);
+
         }
         private void Start() {
             enemySpell = GameObject.FindGameObjectWithTag("Enemy");
@@ -33,18 +44,35 @@ namespace Survival.Stats
             get{return healthPoints;} set{healthPoints = value;}
         }
 
+        public int mana
+        {
+            get{return manaPoints;} set{manaPoints = value;}
+        }
+
 
 
         public void DecreaseHealth()
         {
             healthPoints -= 1;
-            if(healthPoints == 0)
+            CharDie();
+        }
+        public void DecreaseHealthSpell()
+        {
+            healthPoints -= spellEquip.GetDamageSpell();
+            CharDie();
+        }
+
+        private void CharDie()
+        {
+            if (healthPoints <= 0)
             {
                 //Menjalankan Animasi Die 
                 //Menggunakan Animation Event untuk memanggil Die() function
-                Die();
+                OnDie.Invoke();
             }
         }
+
+        
 
         public SpellSO GetSpell()
         {
@@ -73,7 +101,7 @@ namespace Survival.Stats
             {
                 gameManager.enemyDead += 1;
             }
-            OnDie.Invoke();
+            
         }
 
         public void StealSpell()

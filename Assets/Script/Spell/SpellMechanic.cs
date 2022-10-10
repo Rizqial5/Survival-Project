@@ -10,30 +10,35 @@ namespace Survival.Spell
     public class SpellMechanic : MonoBehaviour
     {
         
-        [SerializeField] int spellReserves = 4;
+        
         [SerializeField] float speedLaunch = 50f;
         [SerializeField] GameObject spawnPosition;
 
         [SerializeField] float spellCooldown = 4f;
         [SerializeField] float spellTime = 3f;
         [SerializeField] TargetCharacter targetCharacter;
+        
 
         private GameObject enemySpell;
         private SpellSO spellObject;
         private Animator spellAnimation;
         private Attributes attributes;
         private ISpell spellInterface;
+        
 
         
          
-
+        private void Awake() 
+        {
+            attributes = GetComponent<Attributes>();
+            
+        }
         private void Start() 
         {
             // spellConfig = GetComponent<SpellConfig>();
             // spellAnimation = GetComponent<Animator>();
             spellInterface = GetComponent<ISpell>();
-           
-            attributes = GetComponent<Attributes>();
+            
 
         }
 
@@ -49,8 +54,8 @@ namespace Survival.Spell
         
         public void Spawn()
         {
-            spellReserves -= 1;
-            if(spellReserves > 0 )
+            attributes.mana -= spellObject.GetManaConsumed();
+            if(attributes.mana > 0 )
             {
                 SpawnMechanic(spawnPosition.transform.position);
             }
@@ -91,15 +96,15 @@ namespace Survival.Spell
 
         public void AddSpellReserves()
         {
-            if(spellReserves >= 4) return;
-            spellReserves += 1;
+            if(attributes.mana >= 4) return;
+            attributes.mana += 1;
         }
 
         
 
         public int SpellReserves
         {
-            get{return spellReserves;} set{spellReserves = value;}
+            get{return attributes.mana;} set{attributes.mana = value;}
         }
 
         public float SpellCooldown

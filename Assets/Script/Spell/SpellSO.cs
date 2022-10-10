@@ -11,15 +11,15 @@ namespace Survival.Spell
     public class SpellSO : ScriptableObject 
     {
         [SerializeField] SpellConfig spell;
-        [SerializeField] float damageSpell;
-        [SerializeField] float manaConsumed;
+        [SerializeField] int damageSpell;
+        [SerializeField] int manaConsumed;
         
 
-        public float GetDamageSpell()
+        public int GetDamageSpell()
         {
             return damageSpell;
         }
-        public float GetManaConsumed()
+        public int GetManaConsumed()
         {
             return manaConsumed;
         }

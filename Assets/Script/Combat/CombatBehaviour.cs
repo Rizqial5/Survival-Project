@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Survival.Spell;
+using Survival.Stats;
 
 
 namespace Survival.Combat
@@ -19,11 +20,14 @@ namespace Survival.Combat
         
         [SerializeField] TargetCharacter targetCharacter;
 
+        private Attributes attributes;
+
         GameObject confrontHitBox;
 
         private void Awake() 
         {
            spriteRenderer = GetComponent<SpriteRenderer>();
+           attributes = GetComponent<Attributes>();
         }
 
         private void Start()
@@ -64,6 +68,7 @@ namespace Survival.Combat
 
         private void OnTriggerEnter2D(Collider2D other) {
 
+            if(attributes.health <= 0) return;
             if(!confrontHitBox) return;
 
             if(other.tag == confrontHitBox.tag)

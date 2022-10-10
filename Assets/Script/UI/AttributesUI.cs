@@ -13,15 +13,16 @@ namespace Survival.UI
         [SerializeField] Text healthValue;
         [SerializeField] Text manaValue;
         [SerializeField] Text spellEquipped;
-        [SerializeField] Attributes characterHealth;
+        [SerializeField] Attributes character;
 
 
         // Update is called once per frame
         void Update()
         {
             
-            healthValue.text = characterHealth.health.ToString();
-            spellEquipped.text = characterHealth.GetSpellName();
+            healthValue.text = character.health.ToString();
+            spellEquipped.text = character.GetSpellName();
+            manaValue.text = character.mana.ToString();
              
             
 

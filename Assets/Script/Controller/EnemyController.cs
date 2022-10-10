@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Survival.Movement;
-using Survival.Stats;
 using Survival.Spell;
-using System;
 using Survival.Combat;
+
 
 public class EnemyController : MonoBehaviour, ISpell
 {
@@ -19,6 +15,7 @@ public class EnemyController : MonoBehaviour, ISpell
     [SerializeField] Collider2D playerCollider;
     [SerializeField] int direction;
     [SerializeField] float distanceRequirement = 5;
+  
   
 
     SpriteRenderer spriteRenderer;
@@ -50,6 +47,7 @@ public class EnemyController : MonoBehaviour, ISpell
     // Update is called once per frame
     void Update()
     {
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("EnemyDie") || animator.GetCurrentAnimatorStateInfo(0).IsName("EnemyDieLeft") ) return;
         
         if(!GameObject.FindGameObjectWithTag("Player"))
         {
@@ -161,5 +159,20 @@ public class EnemyController : MonoBehaviour, ISpell
     public TargetCharacter GetTargetCharacter()
     {
         return targetCharacter;
+    }
+
+    public void DieAnimation()
+    {
+        if(direction == 1)
+        {
+            animator.Play("EnemyDie");
+            
+        }
+        else if(direction == -1)
+        {
+            animator.Play("EnemyDieLeft");
+            
+        }
+        
     }
 }

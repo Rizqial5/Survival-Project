@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecac7a5074a88244a127b94320f449f, type: 3}
+  m_Name: CharSO
+  m_EditorClassIdentifier: 
+  enemyStats:
+  - CharCategories: 0
+    enemyBase:
+    - stat: 0
+      amount: 10
+    - stat: 1
+      amount: 1
+    - stat: 2
+      amount: 5
+    spellEquip: {fileID: 0}
+  - CharCategories: 1
+    enemyBase:
+    - stat: 0
+      amount: 3
+    - stat: 1
+      amount: 1
+    - stat: 2
+      amount: 10
+    spellEquip: {fileID: 11400000, guid: 70230c5dc805f4f42b924ac910d7a368, type: 2}
+  - CharCategories: 2
+    enemyBase:
+    - stat: 0
+      amount: 4
+    - stat: 1
+      amount: 2
+    - stat: 2
+      amount: 10
+    spellEquip: {fileID: 0}
+  - CharCategories: 3
+    enemyBase:
+    - stat: 0
+      amount: 2
+    - stat: 1
+      amount: 2
+    - stat: 2
+      amount: 20
+    spellEquip: {fileID: 0}
+  - CharCategories: 4
+    enemyBase:
+    - stat: 0
+      amount: 3
+    - stat: 1
+      amount: 3
+    - stat: 2
+      amount: 20
+    spellEquip: {fileID: 0}
+  - CharCategories: 5
+    enemyBase:
+    - stat: 0
+      amount: 25
+    - stat: 1
+      amount: 5
+    - stat: 2
+      amount: 50
+    spellEquip: {fileID: 0}

@@ -47,7 +47,7 @@ namespace Survival.PlayerController
         void Update()
         {
             
-            
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDie") || animator.GetCurrentAnimatorStateInfo(0).IsName("PlayerDieLeft") ) return;
             // Movement Controller
             MovementMechanic();
 
@@ -261,6 +261,19 @@ namespace Survival.PlayerController
         public TargetCharacter GetTargetCharacter()
         {
             return targetCharacter;
+        }
+
+        public void DieAnimation()
+        {
+            if(direction == 1)
+            {
+                animator.Play("PlayerDie");
+            }
+            else if(direction == -1)
+            {
+                animator.Play("PlayerDieLeft");
+            }
+            
         }
     }
 }

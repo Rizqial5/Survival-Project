@@ -226,7 +226,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3609221076992642818}
         m_TargetAssemblyTypeName: Survival.Stats.Attributes, Assembly-CSharp
-        m_MethodName: DecreaseHealth
+        m_MethodName: DecreaseHealthSpell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -294,15 +294,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e53c1ea97c6ee04189fd7174332c791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 2
-  spellEquip: {fileID: 11400000, guid: 70230c5dc805f4f42b924ac910d7a368, type: 2}
-  manaPoints: 10
+  charSO: {fileID: 11400000, guid: b1a88e146d9de93429965d96824e3b3d, type: 2}
+  CharCategories: 1
   OnDie:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4976933541204150668}
         m_TargetAssemblyTypeName: Survival.Spell.EnemySpell, Assembly-CSharp
         m_MethodName: SpellToPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6890875466496017323}
+        m_TargetAssemblyTypeName: EnemyController, Assembly-CSharp
+        m_MethodName: DieAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -336,7 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c26e3b8943532479eb0a7eedad11af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellReserves: 4
   speedLaunch: 250
   spawnPosition: {fileID: 6248306915793615918}
   spellCooldown: 4

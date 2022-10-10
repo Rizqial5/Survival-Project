@@ -363,9 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e53c1ea97c6ee04189fd7174332c791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 5
-  spellEquip: {fileID: 0}
-  manaPoints: 10
+  charSO: {fileID: 11400000, guid: b1a88e146d9de93429965d96824e3b3d, type: 2}
+  CharCategories: 0
   OnDie:
     m_PersistentCalls:
       m_Calls: []
@@ -434,13 +433,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c26e3b8943532479eb0a7eedad11af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellObject: {fileID: 8137053999419047044, guid: 252016afcb1b43c4ba6d14214ffd9ab2, type: 3}
-  spellAnimation: {fileID: 7116203872357630485, guid: 252016afcb1b43c4ba6d14214ffd9ab2, type: 3}
   spellReserves: 4
   speedLaunch: 200
   spawnPosition: {fileID: 8577354415050898223}
   spellCooldown: 4
   spellTime: 3
+  targetCharacter: 0
 --- !u!114 &265889128759624610
 MonoBehaviour:
   m_ObjectHideFlags: 0
