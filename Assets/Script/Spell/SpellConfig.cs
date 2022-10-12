@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Survival.Combat;
 
 
@@ -9,11 +10,14 @@ namespace Survival.Spell
 {
     public class SpellConfig : MonoBehaviour
     {
-        [SerializeField] float speedLaunch;
         [SerializeField] TargetCharacter targetCharacter = TargetCharacter.Null;
-       
-       
+
         
+        SpriteRenderer spriteRenderer;
+       
+       
+        private int spellDamage;
+        private SpellType spellType;
         
         Animator animator;
          
@@ -21,6 +25,7 @@ namespace Survival.Spell
         private void Start() 
         {
             animator = GetComponent<Animator>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
             
             
             
@@ -42,12 +47,13 @@ namespace Survival.Spell
             
             foreach (ISpell spellInterface in GetComponents<ISpell>())
             {
-                print("bisa");
                 return spellInterface.GetDirection();
             }
 
             return 0 ;
         }
+
+        
 
         
 
@@ -73,6 +79,15 @@ namespace Survival.Spell
         {
             return targetCharacter;
         }
+
+        public int DamageSpell
+        {
+            get{return spellDamage;} set{spellDamage = value;}
+        }
+        public SpellType SpellType
+        {
+            get{return spellType;} set{spellType = value;}
+        }
     
         
 
@@ -84,13 +99,32 @@ namespace Survival.Spell
                 // print("Kena Enemy");
                 this.GetComponent<Rigidbody2D>().Sleep();
                 this.GetComponent<Collider2D>().enabled = false;
-                animator.Play("HitAnimation");
+                if(spriteRenderer.flipX == true)
+                {
+                    animator.Play("HitAnimationLeft");
+                }
+                else if(spriteRenderer.flipX == false)
+                {
+                    animator.Play("HitAnimation");
+                }
+                
+                
+                
                 //SpellCount -1
             }
             else if(targetCharacter == TargetCharacter.Player && other.tag == "Player")
             {
                 // print("Kena Player");
-                
+                this.GetComponent<Rigidbody2D>().Sleep();
+                this.GetComponent<Collider2D>().enabled = false;
+                if(spriteRenderer.flipX == true)
+                {
+                    animator.Play("HitAnimationLeft");
+                }
+                else if(spriteRenderer.flipX == false)
+                {
+                    animator.Play("HitAnimation");
+                }
             }
             
         } 

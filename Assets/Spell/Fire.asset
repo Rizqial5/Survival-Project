@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee26ce567bd796648a2cc771113fae43, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  spell: {fileID: 0}
-  damageSpell: 0
-  manaConsumed: 0
+  spell: {fileID: 5013750884245736767, guid: 355c18e914ecd1249aacde730c041a87, type: 3}
+  damageSpell: 1
+  manaConsumed: 2
+  spellSpeed: 200
+  spellType: 0

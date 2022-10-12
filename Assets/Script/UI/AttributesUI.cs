@@ -12,7 +12,7 @@ namespace Survival.UI
     {
         [SerializeField] Text healthValue;
         [SerializeField] Text manaValue;
-        [SerializeField] Text spellEquipped;
+        [SerializeField] Text[] spellEquipped;
         [SerializeField] Attributes character;
 
 
@@ -20,13 +20,25 @@ namespace Survival.UI
         void Update()
         {
             
-            healthValue.text = character.health.ToString();
-            spellEquipped.text = character.GetSpellName();
+            HealthText();
             manaValue.text = character.mana.ToString();
+
+            for (int i = 0; i < spellEquipped.Length; i++)
+            {
+                spellEquipped[i].text = character.GetSpellName(i);
+            }
+            
+            
              
             
 
             
+        }
+
+        private string HealthText()
+        {
+            if(character.health <= -1) return healthValue.text = "0";
+            return healthValue.text = character.health.ToString();
         }
     }
 }

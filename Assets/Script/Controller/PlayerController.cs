@@ -64,26 +64,20 @@ namespace Survival.PlayerController
             }
 
             //Spell Activation Controller
-            if(Input.GetKeyDown(KeyCode.Mouse1))
+            if(Input.GetKeyDown(KeyCode.Mouse1))//Spell slot 1
             {
-                if(!spellMechanic.isEquipped()) return;
-                if(spellMechanic.SpellReserves == 1) return; 
-                if(spellMechanic.SpellCooldown < spellMechanic.SpellTime) return;
+                SpellController(0);
 
-                spellMechanic.SpellCooldown = 0;
-                if(direction == 1)
-                {
-                    // spellMechanic.Spawn();
-                    animator.Play("SpellAttack");
-                    
-                }
-                else if(direction == -1)
-                {
-                    // spellMechanic.Spawn();
-                    animator.Play("SpellAttackLeft");
-                }
+            }
+            else if(Input.GetKeyDown(KeyCode.Z)) //Spell slot 2
+            {
+               
+                SpellController(1);
+            }
+            else if(Input.GetKeyDown(KeyCode.X))
+            {
                 
-                
+                SpellController(2);
             }
 
             
@@ -161,6 +155,31 @@ namespace Survival.PlayerController
 
         }
 
+        private void SpellController(int spellIndex)
+        {
+            if (!spellMechanic.isEquipped()) return;
+            if (spellMechanic.SpellReserves == 1) return;
+            if (spellMechanic.SpellCooldown < spellMechanic.SpellTime) return;
+            
+
+            spellMechanic.SpellIndex = spellIndex;
+
+            if(!spellMechanic.isThereAnySpell()) return;
+
+            spellMechanic.SpellCooldown = 0;
+            
+            if (direction == 1)
+            {
+                // spellMechanic.Spawn();
+                animator.Play("SpellAttack");
+
+            }
+            else if (direction == -1)
+            {
+                // spellMechanic.Spawn();
+                animator.Play("SpellAttackLeft");
+            }
+        }
 
         private void JumpMechanic()
         {

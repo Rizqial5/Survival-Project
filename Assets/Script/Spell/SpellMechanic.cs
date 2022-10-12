@@ -10,8 +10,6 @@ namespace Survival.Spell
     public class SpellMechanic : MonoBehaviour
     {
         
-        
-        [SerializeField] float speedLaunch = 50f;
         [SerializeField] GameObject spawnPosition;
 
         [SerializeField] float spellCooldown = 4f;
@@ -24,6 +22,7 @@ namespace Survival.Spell
         private Animator spellAnimation;
         private Attributes attributes;
         private ISpell spellInterface;
+        private int spellIndex;
         
 
         
@@ -46,26 +45,51 @@ namespace Survival.Spell
         {
     
             spellCooldown += Time.deltaTime;
-            spellObject = attributes.GetSpell();
+            if(targetCharacter == TargetCharacter.Enemy)
+            {
+                
+                spellObject = attributes.GetSpell(spellIndex);
+            }
+            else if(targetCharacter == TargetCharacter.Player)
+            {
+                spellObject = attributes.GetSpell();
+            }
+            
 
             
         }
 
+        public bool isThereAnySpell()
+        {
+            if(!attributes.GetSpell(spellIndex)) return false;
+            return true;
+            
+        }
         
         public void Spawn()
         {
             attributes.mana -= spellObject.GetManaConsumed();
             if(attributes.mana > 0 )
             {
-                SpawnMechanic(spawnPosition.transform.position);
+                if(spellObject.GetSpellType() == SpellType.Projectile)
+                {
+                    SpawnMechanic(spawnPosition.transform.position);
+                }
+                else if(spellObject.GetSpellType() == SpellType.Buff)
+                {
+                    SpawnMechanic(transform.position);
+                }
+    
+                
             }
 
         
             
             
         }
+        
 
-        public void SpawnMechanic(Vector3 spawnPosition )
+        public void SpawnMechanic(Vector3 spawnPosition)
         {
             if(!spellObject) return;
             
@@ -75,25 +99,63 @@ namespace Survival.Spell
             newSpell.GetComponent<SpellConfig>().SetTargetCharacter(targetCharacter);
             
             float direction = GetDirection();
+            SpellType spellType = spellObject.GetSpellType();
 
+            
             if(!newSpell) return ;
 
+            newSpell.GetComponent<SpellConfig>().SpellType = spellType;
+            newSpell.DamageSpell = spellObject.GetDamageSpell();
+            
             if(direction == 1)
             {
-                newSpell.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right*speedLaunch);
-                newSpell.gameObject.GetComponent<Animator>().Play("LaunchRight");
+                if(spellType == SpellType.Projectile)
+                {
+                    newSpell.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right*spellObject.GetSpellSpeed());
+                    newSpell.gameObject.GetComponent<Animator>().Play("LaunchRight");
+                }
+                else if(spellType == SpellType.Burst)
+                {
+                    //Mechanic Burst
+                }
+                else if(spellType == SpellType.Buff)
+                {
+                    newSpell.gameObject.GetComponent<Animator>().Play("BuffActivated");
+                    BuffHealthEffect(spellObject.GetStatEffect(Stat.HealthPoint)); //Perlu revisi (TAG)
+                }
+                
+                
                 
             }
             else if(direction == -1)
-            {
-                newSpell.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left*speedLaunch);
-                newSpell.gameObject.GetComponent<Animator>().Play("LaunchLeft");
+            { 
+                if(spellType == SpellType.Projectile)
+                {
+                    newSpell.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left*spellObject.GetSpellSpeed());
+                    newSpell.gameObject.GetComponent<Animator>().Play("LaunchLeft");
+                }
+                else if(spellType == SpellType.Burst)
+                {
+                    //Mechanic Burst
+                }
+                else if(spellType == SpellType.Buff)
+                {
+                    newSpell.gameObject.GetComponent<Animator>().Play("BuffActivated");
+                    BuffHealthEffect(spellObject.GetStatEffect(Stat.HealthPoint));
+                }
+                
                 
             }
 
             
         }
 
+        private int BuffHealthEffect(int amount)
+        {
+           return attributes.health += amount;
+        }
+
+        
         public void AddSpellReserves()
         {
             if(attributes.mana >= 4) return;
@@ -110,6 +172,11 @@ namespace Survival.Spell
         public float SpellCooldown
         {
             get{return spellCooldown;} set{spellCooldown = value;}
+        }
+
+        public int SpellIndex
+        {
+            get{return spellIndex;} set{spellIndex = value;}
         }
 
         public float SpellTime

@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee26ce567bd796648a2cc771113fae43, type: 3}
   m_Name: Holy
   m_EditorClassIdentifier: 
-  spell: {fileID: 0}
+  spell: {fileID: 6174355060954345503, guid: db11cfad22f8e3645b4d775f75a11b6c, type: 3}
   damageSpell: 0
   manaConsumed: 0
+  spellSpeed: 0
+  spellType: 2
+  statEffects:
+  - stat: 1
+    amount: 2
+  - stat: 0
+    amount: 1

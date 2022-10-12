@@ -15,3 +15,5 @@ MonoBehaviour:
   spell: {fileID: 3707246125149486480, guid: 252016afcb1b43c4ba6d14214ffd9ab2, type: 3}
   damageSpell: 2
   manaConsumed: 1
+  spellSpeed: 250
+  spellType: 0

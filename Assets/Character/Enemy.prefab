@@ -224,9 +224,9 @@ MonoBehaviour:
   spellHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3609221076992642818}
-        m_TargetAssemblyTypeName: Survival.Stats.Attributes, Assembly-CSharp
-        m_MethodName: DecreaseHealthSpell
+      - m_Target: {fileID: 5443549478902313894}
+        m_TargetAssemblyTypeName: KnockBackSystem, Assembly-CSharp
+        m_MethodName: PlayKnockback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -236,13 +236,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5443549478902313894}
+      - m_Target: {fileID: 7486899737529856974, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
         m_TargetAssemblyTypeName: KnockBackSystem, Assembly-CSharp
-        m_MethodName: PlayKnockback
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -296,6 +296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charSO: {fileID: 11400000, guid: b1a88e146d9de93429965d96824e3b3d, type: 2}
   CharCategories: 1
+  spellInventory:
+  - {fileID: 0}
   OnDie:
     m_PersistentCalls:
       m_Calls:
@@ -347,7 +349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c26e3b8943532479eb0a7eedad11af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedLaunch: 250
   spawnPosition: {fileID: 6248306915793615918}
   spellCooldown: 4
   spellTime: 3

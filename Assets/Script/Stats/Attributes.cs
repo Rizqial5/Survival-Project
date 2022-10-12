@@ -16,10 +16,11 @@ namespace Survival.Stats
         // [SerializeField] int manaPoints = 10;
         [SerializeField] CharSO charSO;
         [SerializeField] CharCategories CharCategories;
+        [SerializeField] SpellSO[] spellInventory;
 
         private int healthPoints;
         private int manaPoints;
-        private SpellSO spellEquip;
+        SpellSO spellEquip;
 
       
 
@@ -38,6 +39,16 @@ namespace Survival.Stats
         }
         private void Start() {
             enemySpell = GameObject.FindGameObjectWithTag("Enemy");
+            if(!spellInventory[0])
+            {
+                spellInventory[0] = spellEquip;
+            }
+            
+        }
+
+        private void Update() {
+            CharDie();
+            
         }
         public int health
         {
@@ -54,13 +65,12 @@ namespace Survival.Stats
         public void DecreaseHealth()
         {
             healthPoints -= 1;
-            CharDie();
+            
         }
-        public void DecreaseHealthSpell()
-        {
-            healthPoints -= spellEquip.GetDamageSpell();
-            CharDie();
-        }
+
+        
+
+        
 
         private void CharDie()
         {
@@ -72,28 +82,6 @@ namespace Survival.Stats
             }
         }
 
-        
-
-        public SpellSO GetSpell()
-        {
-            return spellEquip;
-        }
-
-        public SpellSO SetSpell(SpellSO value)
-        {
-           return spellEquip = value;
-        }
-
-        public string GetSpellName()
-        {
-            if(!spellEquip)
-            {
-                return "None";
-            }
-            return spellEquip.name;
-        }
-
-
         private void Die()
         {
             Destroy(gameObject);
@@ -103,15 +91,43 @@ namespace Survival.Stats
             }
             
         }
+        
 
-        public void StealSpell()
+        public SpellSO GetSpell()
         {
-            //Get enemy spell
-            SpellSO dropSpell = enemySpell.GetComponent<Attributes>().GetSpell();
-            //player spell == enemy spell
-            spellEquip = dropSpell;
-            
+            return spellEquip;
         }
+
+        public SpellSO GetSpell(int spellIndex)
+        {
+            if(!spellInventory[spellIndex]) return null;
+            return spellInventory[spellIndex];
+        }
+
+        
+
+        public SpellSO SetSpell(SpellSO value)
+        {
+           int spellAmount = spellInventory.Length;
+           for (int i = 0; i < spellAmount; i++)
+           {
+                if(!spellInventory[i]) return spellInventory[i] = value;
+           }
+
+            return null;
+        }
+
+        public string GetSpellName(int index)
+        {
+            if(!spellInventory[index])
+            {
+                return "none";
+            }
+            return spellInventory[index].name;
+
+        }
+        
+        
 
 
 

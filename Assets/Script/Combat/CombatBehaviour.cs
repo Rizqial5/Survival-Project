@@ -66,6 +66,8 @@ namespace Survival.Combat
             return targetCharacter;
         }
 
+        
+
         private void OnTriggerEnter2D(Collider2D other) {
 
             if(attributes.health <= 0) return;
@@ -86,7 +88,11 @@ namespace Survival.Combat
             {
                 
                 print(other.GetComponent<SpellConfig>().GetTargetCharacter().ToString() == tag);
-                print($"Kena hit {this.tag}");
+                // print($"Kena hit {this.tag}");
+
+                attributes.health -= other.GetComponent<SpellConfig>().DamageSpell;
+                print(other.GetComponent<SpellConfig>().DamageSpell);
+
                 spriteRenderer.color = Color.blue;
                 spellHit.Invoke();
                 StartCoroutine("ChangeSprite");
