@@ -364,6 +364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charSO: {fileID: 11400000, guid: b1a88e146d9de93429965d96824e3b3d, type: 2}
   CharCategories: 0
+  spellInventory:
+  - {fileID: 11400000, guid: b620c1edbcfdc4044875c17c71b78784, type: 2}
   OnDie:
     m_PersistentCalls:
       m_Calls: []

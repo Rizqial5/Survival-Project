@@ -1887,7 +1887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &697708667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4666,7 +4666,7 @@ PrefabInstance:
     - target: {fileID: 1826898809392156596, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
       propertyPath: spellInventory.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: f1368a264cc92ea44800598d07fa4ced, type: 2}
+      objectReference: {fileID: 11400000, guid: b620c1edbcfdc4044875c17c71b78784, type: 2}
     - target: {fileID: 1826898809392156596, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.size
       value: 1

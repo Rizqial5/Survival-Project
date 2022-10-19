@@ -17,3 +17,8 @@ MonoBehaviour:
   manaConsumed: 2
   spellSpeed: 200
   spellType: 0
+  spellEffects:
+  - statEffects: []
+    behaviourEffects:
+    - bodyEffect: 0
+      amount: 10

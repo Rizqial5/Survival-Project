@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using Survival.Core;
 using Survival.Spell;
 using Survival.CharType;
+using System;
 
 namespace Survival.Stats
 {
@@ -20,13 +21,22 @@ namespace Survival.Stats
 
         private int healthPoints;
         private int manaPoints;
+        private int burnedHitCount;
+        private float startBurned;
+        [SerializeField] float burnTimeLimit = 2f;
+        private float burnedStateTime;
         SpellSO spellEquip;
+
+
 
       
 
         public UnityEvent OnDie;
+        public UnityEvent OnBurned;
         private GameObject enemySpell;
         private GameManager gameManager;
+        private bool isBurned;
+        
 
 
 
@@ -44,10 +54,22 @@ namespace Survival.Stats
                 spellInventory[0] = spellEquip;
             }
             
+            print(gameObject.tag + spellInventory[0].GetBehaveEnum());
         }
 
         private void Update() {
             CharDie();
+
+            if(isBurned)
+            {
+                BurnedState();
+                startBurned += Time.deltaTime;
+            }
+
+           
+            
+
+            
             
         }
         public int health
@@ -58,6 +80,11 @@ namespace Survival.Stats
         public int mana
         {
             get{return manaPoints;} set{manaPoints = value;}
+        }
+
+        public bool IsBurned
+        {
+            get{return isBurned;} set{isBurned = value;}
         }
 
 
@@ -91,7 +118,32 @@ namespace Survival.Stats
             }
             
         }
-        
+
+        private void BurnedState()
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.red;
+            
+            if(startBurned >  burnTimeLimit)
+            {
+                OnBurned.Invoke();
+                startBurned = 0;
+                CheckBurnedState();
+            }
+            // startBurned = 0;
+            
+        }
+
+        private void CheckBurnedState()
+        {
+            burnedHitCount += 1;
+            print(burnedHitCount);
+            if(burnedHitCount ==2 )
+            {
+                isBurned = false;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
+                burnedHitCount = 0;
+            }
+        }
 
         public SpellSO GetSpell()
         {

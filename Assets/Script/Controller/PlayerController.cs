@@ -5,7 +5,7 @@ using Survival.Movement;
 using Survival.Combat;
 using Survival.Spell;
 
-namespace Survival.PlayerController
+namespace Survival.Controller
 {
     public class PlayerController : MonoBehaviour, ISpell
     {

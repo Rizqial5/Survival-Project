@@ -17,8 +17,10 @@ MonoBehaviour:
   manaConsumed: 0
   spellSpeed: 0
   spellType: 2
-  statEffects:
-  - stat: 1
-    amount: 2
-  - stat: 0
-    amount: 1
+  spellEffects:
+  - statEffects:
+    - stat: 0
+      amount: 2
+    behaviourEffects:
+    - bodyEffect: 3
+      amount: 0

@@ -15,28 +15,69 @@ namespace Survival.Spell
         [SerializeField] int manaConsumed;
         [SerializeField] float spellSpeed;
         [SerializeField] SpellType spellType;
-        [SerializeField] StatEffect[] statEffects;
+        [SerializeField] SpellEffect[] spellEffects;
         
 
-        Dictionary<Stat, int> lookUpTable;
+        Dictionary<Stat, int> lookUpStatTable;
+        Dictionary<BehaveEnum,int> lookUpBehaveTable;
 
-
+        BehaviourEffect behaviourEffect;
 
         public int GetStatEffect(Stat stat)
         {
-            BuildLookUpTable();
+            BuildLookUpStatTable();
 
-            return lookUpTable[stat];
+            return lookUpStatTable[stat];
         }
-        public void BuildLookUpTable()
+
+        public int GetBehaveEffect(BehaveEnum behaviour)
         {
-            if(lookUpTable != null) return;
+            BuildLookUpBehaveTable();
+            return lookUpBehaveTable[behaviour];
+        }
 
-            lookUpTable = new Dictionary<Stat, int>();
+        public BehaveEnum GetBehaveEnum()
+        {
+            BuildLookUpBehaveTable();
 
-            foreach (StatEffect statEffect in statEffects)
+            foreach (var item in lookUpBehaveTable)
             {
-                lookUpTable[statEffect.stat] = statEffect.amount;
+                return item.Key;
+            }
+
+            
+            return behaviourEffect.bodyEffect;
+            
+        }
+
+        
+        public void BuildLookUpStatTable()
+        {
+            if(lookUpStatTable != null) return;
+
+            lookUpStatTable = new Dictionary<Stat, int>();
+
+            foreach (SpellEffect spellEffect in spellEffects)
+            {
+                foreach (StatEffect statEffect in spellEffect.statEffects)
+                {
+                    lookUpStatTable[statEffect.stat] = statEffect.amount;
+                }
+            }
+        }
+
+        public void BuildLookUpBehaveTable()
+        {
+            if(lookUpBehaveTable != null) return;
+
+            lookUpBehaveTable = new Dictionary<BehaveEnum, int>();
+
+            foreach (SpellEffect spellEffect in spellEffects)
+            {
+                foreach (BehaviourEffect behaveEffect in spellEffect.behaviourEffects)
+                {
+                    lookUpBehaveTable[behaveEffect.bodyEffect] = behaveEffect.amount;
+                }
             }
         }
         public int GetDamageSpell()
@@ -67,10 +108,5 @@ namespace Survival.Spell
         
     }
 
-    [System.Serializable]
-    public class StatEffect
-    {
-        public Stat stat;
-        public int amount;
-    }
+    
 }
