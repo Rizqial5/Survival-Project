@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell: {fileID: 6174355060954345503, guid: db11cfad22f8e3645b4d775f75a11b6c, type: 3}
   damageSpell: 0
-  manaConsumed: 0
+  manaConsumed: 3
   spellSpeed: 0
   spellType: 2
   spellEffects:

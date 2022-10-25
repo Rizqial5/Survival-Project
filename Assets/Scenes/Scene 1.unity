@@ -4802,7 +4802,7 @@ PrefabInstance:
     - target: {fileID: 1826898809392156596, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
       propertyPath: spellInventory.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b620c1edbcfdc4044875c17c71b78784, type: 2}
+      objectReference: {fileID: 11400000, guid: 520ea90147267c948af50a2f23e1d39f, type: 2}
     - target: {fileID: 1826898809392156596, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
       propertyPath: spellInventory.Array.data[1]
       value: 
