@@ -15,6 +15,11 @@ namespace Survival.Spell
         [SerializeField] float spellCooldown = 4f;
         [SerializeField] float spellTime = 3f;
         [SerializeField] TargetCharacter targetCharacter;
+
+        public int spellRequired
+        {
+            get{return spellObject.GetManaConsumed();}
+        }
         
 
         private GameObject enemySpell;
@@ -68,20 +73,24 @@ namespace Survival.Spell
         
         public void Spawn()
         {
+            if(attributes.mana < spellObject.GetManaConsumed()) return;
             attributes.mana -= spellObject.GetManaConsumed();
-            if(attributes.mana > 0 )
+            
+            if(spellObject.GetSpellType() == SpellType.Projectile)
             {
-                if(spellObject.GetSpellType() == SpellType.Projectile)
-                {
-                    SpawnMechanic(spawnPosition.transform.position);
-                }
-                else if(spellObject.GetSpellType() == SpellType.Buff)
-                {
-                    SpawnMechanic(transform.position);
-                }
+                SpawnMechanic(spawnPosition.transform.position);
+            }
+            else if(spellObject.GetSpellType() == SpellType.Buff)
+            {
+                SpawnMechanic(transform.position);
+            }
+            else if(spellObject.GetSpellType() == SpellType.Burst)
+            {
+                SpawnMechanic(spawnPosition.transform.position);
+            }
     
                 
-            }
+            
 
         
             
@@ -102,7 +111,8 @@ namespace Survival.Spell
             SpellType spellType = spellObject.GetSpellType();
 
             
-            if(!newSpell) return ;
+            if(!newSpell) return;
+            
 
             newSpell.GetComponent<SpellConfig>().SpellType = spellType;
             newSpell.DamageSpell = spellObject.GetDamageSpell();
@@ -113,10 +123,13 @@ namespace Survival.Spell
                 {
                     newSpell.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right*spellObject.GetSpellSpeed());
                     newSpell.gameObject.GetComponent<Animator>().Play("LaunchRight");
+                    print("this a");
                 }
                 else if(spellType == SpellType.Burst)
                 {
-                    //Mechanic Burst
+                    newSpell.gameObject.GetComponent<Animator>().Play("PrepareAnim");
+                    newSpell.gameObject.GetComponent<SpellSideEffect>().Direction = GetDirection();
+                    newSpell.gameObject.GetComponent<SpellSideEffect>().PushAmount = spellObject.GetBehaveEffect(BehaveEnum.pushEffect);
                 }
                 else if(spellType == SpellType.Buff)
                 {
@@ -136,7 +149,7 @@ namespace Survival.Spell
                 }
                 else if(spellType == SpellType.Burst)
                 {
-                    //Mechanic Burst
+                    newSpell.gameObject.GetComponent<Animator>().Play("PrepareAnimLeft");
                 }
                 else if(spellType == SpellType.Buff)
                 {
@@ -158,7 +171,7 @@ namespace Survival.Spell
         
         public void AddSpellReserves()
         {
-            if(attributes.mana >= 4) return;
+            if(attributes.mana == 5) return;
             attributes.mana += 1;
         }
 

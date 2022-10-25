@@ -20,12 +20,13 @@ namespace Survival.Controller
     
     
 
-        SpriteRenderer spriteRenderer;
-        Mover mover;
-        Animator animator;
-        SpellMechanic spellMechanic;
-        TargetCharacter targetCharacter;
+        private SpriteRenderer spriteRenderer;
+        private Mover mover;
+        private Animator animator;
+        private SpellMechanic spellMechanic;
+        private TargetCharacter targetCharacter;
         
+        private bool isMove = true;
 
 
 
@@ -49,6 +50,8 @@ namespace Survival.Controller
         // Update is called once per frame
         void Update()
         {
+            
+            if(!isMove) return;
             if(animator.GetCurrentAnimatorStateInfo(0).IsName("EnemyDie") || animator.GetCurrentAnimatorStateInfo(0).IsName("EnemyDieLeft") ) return;
             
             if(!GameObject.FindGameObjectWithTag("Player"))
@@ -84,6 +87,13 @@ namespace Survival.Controller
 
         }
 
+        public bool IsMove
+        {
+            get{return isMove;} set{isMove = value;}
+        }
+
+        
+
         private void ShootSpell()
         {
             if (Distance() > distanceRequirement || Distance() < -distanceRequirement && DistanceYRequire())
@@ -112,6 +122,8 @@ namespace Survival.Controller
         {
             return DistanceY() <= 0.5 && DistanceY() >= 0;
         }
+
+    
 
         private float DistanceY()
         {

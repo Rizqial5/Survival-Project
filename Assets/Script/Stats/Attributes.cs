@@ -24,6 +24,8 @@ namespace Survival.Stats
         private int burnedHitCount;
         private float startBurned;
         [SerializeField] float burnTimeLimit = 2f;
+        [SerializeField] float stunTimeLimit= 2f;
+        [SerializeField] float pushTimeLimit = 1f;
         private float burnedStateTime;
         SpellSO spellEquip;
 
@@ -33,18 +35,25 @@ namespace Survival.Stats
 
         public UnityEvent OnDie;
         public UnityEvent OnBurned;
+        public UnityEvent OnStunned;
+        public UnityEvent AfterStunned;
         private GameObject enemySpell;
         private GameManager gameManager;
+        private Rigidbody2D rb;
         private bool isBurned;
+        private bool isStunned;
+        private bool isPushed;
+        private float startStunned;
+        private float startPushed;
         
-
-
+        
 
         private void Awake() {
             gameManager = GameObject.FindObjectOfType<GameManager>();
             healthPoints = (int) charSO.GetStat(Stat.HealthPoint, CharCategories);
             manaPoints = (int) charSO.GetStat(Stat.ManaPoint, CharCategories);
             spellEquip = charSO.GetSpellSO(CharCategories);
+            rb = GetComponent<Rigidbody2D>();
 
         }
         private void Start() {
@@ -64,7 +73,17 @@ namespace Survival.Stats
             {
                 BurnedState();
                 startBurned += Time.deltaTime;
+            }else if(isStunned)
+            {
+                
+                StunnedState();
+                startStunned += Time.deltaTime;
+            } else if(isPushed)
+            {
+                PushedState();
+                startPushed += Time.deltaTime;
             }
+
 
            
             
@@ -86,6 +105,16 @@ namespace Survival.Stats
         {
             get{return isBurned;} set{isBurned = value;}
         }
+
+        public bool IsStunned
+        {
+            get{return isStunned;} set{isStunned = value;}
+        }
+        public bool IsPushed
+        {
+            get{return isPushed;} set{isPushed = value;}
+        }
+
 
 
 
@@ -142,6 +171,39 @@ namespace Survival.Stats
                 isBurned = false;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
                 burnedHitCount = 0;
+            }
+        }
+
+        private void StunnedState()
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.yellow;
+            
+
+            if(startStunned < stunTimeLimit)
+            {
+                OnStunned.Invoke();
+            }else 
+            {
+                AfterStunned.Invoke();
+                this.GetComponent<SpriteRenderer>().color = Color.white;
+                isStunned = false;
+                startStunned = 0;
+            }
+        }
+
+        private void PushedState()
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.green;
+            
+            
+            if(startPushed < pushTimeLimit)
+            {
+                
+            }else
+            {
+                this.GetComponent<SpriteRenderer>().color = Color.white;
+                isPushed = false;
+                startPushed = 0;
             }
         }
 

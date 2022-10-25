@@ -1865,12 +1865,148 @@ PrefabInstance:
       propertyPath: spellInventory.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 657236124}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 657236128}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 657236124}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 657236128}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_IsMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_IsMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Survival.Controller.EnemyController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Survival.Controller.EnemyController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: OnStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609221076992642818, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: AfterStunned.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139163835345823851, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+      propertyPath: spellHit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5714309467690977521, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+--- !u!114 &657236124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6890875466496017323, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+  m_PrefabInstance: {fileID: 567958223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919ee1cb9b8d2874d894486978212350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &657236128 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 317571077085044322, guid: 335c864f68e678a469b8bdf9e2933f60, type: 3}
+  m_PrefabInstance: {fileID: 567958223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &697708666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4667,6 +4803,10 @@ PrefabInstance:
       propertyPath: spellInventory.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: b620c1edbcfdc4044875c17c71b78784, type: 2}
+    - target: {fileID: 1826898809392156596, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
+      propertyPath: spellInventory.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70230c5dc805f4f42b924ac910d7a368, type: 2}
     - target: {fileID: 1826898809392156596, guid: 6be73e33e216639429fd9cb6c234cec4, type: 3}
       propertyPath: OnDie.m_PersistentCalls.m_Calls.Array.size
       value: 1

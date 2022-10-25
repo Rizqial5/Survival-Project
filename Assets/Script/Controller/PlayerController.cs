@@ -64,17 +64,17 @@ namespace Survival.Controller
             }
 
             //Spell Activation Controller
-            if(Input.GetKeyDown(KeyCode.Mouse1))//Spell slot 1
+            if(Input.GetKey(KeyCode.Mouse1))//Spell slot 1
             {
                 SpellController(0);
 
             }
-            else if(Input.GetKeyDown(KeyCode.Z)) //Spell slot 2
+            else if(Input.GetKey(KeyCode.Z)) //Spell slot 2
             {
                
                 SpellController(1);
             }
-            else if(Input.GetKeyDown(KeyCode.X))
+            else if(Input.GetKey(KeyCode.X))
             {
                 
                 SpellController(2);
@@ -158,13 +158,13 @@ namespace Survival.Controller
         private void SpellController(int spellIndex)
         {
             if (!spellMechanic.isEquipped()) return;
-            if (spellMechanic.SpellReserves == 1) return;
             if (spellMechanic.SpellCooldown < spellMechanic.SpellTime) return;
             
 
             spellMechanic.SpellIndex = spellIndex;
 
             if(!spellMechanic.isThereAnySpell()) return;
+            if(spellMechanic.SpellReserves < spellMechanic.spellRequired) return;
 
             spellMechanic.SpellCooldown = 0;
             

@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee26ce567bd796648a2cc771113fae43, type: 3}
   m_Name: Wind
   m_EditorClassIdentifier: 
-  spell: {fileID: 0}
-  damageSpell: 0
-  manaConsumed: 0
+  spell: {fileID: 7970873769380427873, guid: 2a4499149f374434aba9b512e6e602a2, type: 3}
+  damageSpell: 1
+  manaConsumed: 4
+  spellSpeed: 1
+  spellType: 1
+  spellEffects:
+  - statEffects: []
+    behaviourEffects:
+    - bodyEffect: 2
+      amount: 100
