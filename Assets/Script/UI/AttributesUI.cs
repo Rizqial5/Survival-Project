@@ -19,6 +19,7 @@ namespace Survival.UI
         // Update is called once per frame
         void Update()
         {
+            if(!character) return;
             
             HealthText();
             manaValue.text = character.mana.ToString();
@@ -37,6 +38,7 @@ namespace Survival.UI
 
         private string HealthText()
         {
+            if(!healthValue) return "0";
             if(character.health <= -1) return healthValue.text = "0";
             return healthValue.text = character.health.ToString();
         }

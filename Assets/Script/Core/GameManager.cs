@@ -37,6 +37,7 @@ namespace Survival.Core
             }
 
             debugUI.EnemyDeadcount = enemyDead.ToString();
+            debugUI.EnemyInStage = CountEnemyInStage().ToString();
 
             // print($"Jumlah enemy {CountEnemy()}");
         }
@@ -46,12 +47,17 @@ namespace Survival.Core
             get{return enemyDeadcount;} set{enemyDeadcount = value;}
         }
 
-        public int CountEnemy()
+        public int CountEnemyInStage()
         {
             
             enemy = GameObject.FindGameObjectsWithTag("Enemy");
             
             return enemy.Length;
+        }
+
+        public string DisplayTotalEnemy(string value)
+        {
+            return debugUI.TotalEnemy = value;
         }
     }
 }

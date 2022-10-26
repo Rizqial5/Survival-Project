@@ -13,6 +13,8 @@ namespace Survival.Core
         [SerializeField] float spawnTime = 4f;
 
         GameManager gameManager;
+        private int spawnCount;
+        
         
         private void Awake() 
         {
@@ -30,7 +32,7 @@ namespace Survival.Core
         {
 
             
-
+            if(!CanSpawn()) return;
             SpawnObject();
 
             spawnCooldown += Time.deltaTime;
@@ -38,7 +40,7 @@ namespace Survival.Core
 
         private void SpawnObject()
         {
-            if(!CanSpawn()) return;
+            
             if (spawnCooldown < spawnTime) return;
             
             spawnCooldown = 0;
@@ -48,6 +50,7 @@ namespace Survival.Core
         private void SpawnMechanic()
         {
             int len = spawnPoints.Length;
+            
 
             int randomNumber = Random.Range(0,len);
 
@@ -55,12 +58,14 @@ namespace Survival.Core
             //Sesuai dengan ronde
 
             Instantiate(spawnGameObject, spawnPoints[randomNumber]);
+            spawnCount++;
+            gameManager.DisplayTotalEnemy(spawnCount.ToString());
 
         }
 
         private bool CanSpawn()
         {
-            if(gameManager.CountEnemy() < 5)
+            if(gameManager.CountEnemyInStage() < 4)
             {
                 return true;
             }

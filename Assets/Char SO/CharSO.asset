@@ -25,7 +25,7 @@ MonoBehaviour:
   - CharCategories: 1
     enemyBase:
     - stat: 0
-      amount: 93
+      amount: 3
     - stat: 1
       amount: 1
     - stat: 2
